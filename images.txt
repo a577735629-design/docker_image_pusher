@@ -1,13 +1,5 @@
-# 1. 创建数据目录
-mkdir -p xianyu-auto-reply
+# 创建数据目录
+mkdir xianyu-auto-reply
 
-# 2. 一键启动容器（支持AMD64/ARM64，自动选择架构）
-docker run -d \
-  -p 8080:8080 \
-  --restart always \
-  -v $PWD/xianyu-auto-reply/:/app/data/ \
-  --name xianyu-auto-reply \
-  registry.cn-shanghai.aliyuncs.com/zhinian-software/xianyu-auto-reply:latest
-
-# 3. 访问系统
-# http://localhost:8080
+# 国内用户（阿里云）
+docker run -d -p 8080:8080 --restart always -v %cd%/xianyu-auto-reply/:/app/data/ --name xianyu-auto-reply registry.cn-shanghai.aliyuncs.com/zhinian-software/xianyu-auto-reply:latest
