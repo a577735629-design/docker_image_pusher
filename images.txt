@@ -1,6 +1,13 @@
-nginx
-#支持私库
-k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.0.0
-xhofe/alist:latest
-#支持指定架构
---platform=linux/arm64 xiaoyaliu/alist
+# 1. 创建数据目录
+mkdir -p xianyu-auto-reply
+
+# 2. 一键启动容器（支持AMD64/ARM64，自动选择架构）
+docker run -d \
+  -p 8080:8080 \
+  --restart always \
+  -v $PWD/xianyu-auto-reply/:/app/data/ \
+  --name xianyu-auto-reply \
+  registry.cn-shanghai.aliyuncs.com/zhinian-software/xianyu-auto-reply:latest
+
+# 3. 访问系统
+# http://localhost:8080
